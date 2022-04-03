@@ -33,8 +33,9 @@ void AHPCharacter::SetupPlayerInputComponent(UInputComponent* PlayerInputCompone
 	PlayerInputComponent->BindAxis(TEXT("MoveRight"), this, &AHPCharacter::MoveRight);
 	PlayerInputComponent->BindAxis(TEXT("Turn"), this, &AHPCharacter::AddControllerYawInput);
 	PlayerInputComponent->BindAxis(TEXT("LookUp"), this, &AHPCharacter::AddControllerPitchInput);
-	PlayerInputComponent->BindAction(TEXT("Jump"), IE_Pressed, this, &AHPCharacter::Jump);
 
+	PlayerInputComponent->BindAction(TEXT("Jump"), IE_Pressed, this, &AHPCharacter::Jump);
+	PlayerInputComponent->BindAction(TEXT("Wrench"), IE_Pressed, this, &AHPCharacter::WackWrench);
 }
 
 void AHPCharacter::MoveForward(float AxisVal)
@@ -45,5 +46,9 @@ void AHPCharacter::MoveForward(float AxisVal)
 void AHPCharacter::MoveRight(float AxisVal)
 {
 	AddMovementInput(GetActorRightVector() * AxisVal);
+}
+
+void AHPCharacter::WackWrench()
+{
 }
 

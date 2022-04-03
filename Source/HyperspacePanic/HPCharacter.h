@@ -30,4 +30,6 @@ protected:
 
 	void MoveForward(float AxisVal);
 	void MoveRight(float AxisVal);
+
+	void WackWrench();
 };
