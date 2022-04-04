@@ -50,5 +50,20 @@ void AHPCharacter::MoveRight(float AxisVal)
 
 void AHPCharacter::WackWrench()
 {
+	FVector start = GetActorLocation();
+	FVector forward = cam->GetForwardVector();
+	start = FVector(start.X + (forward.X * 100), start.Y + (forward.Y * 100), start.Z + (forward.Z * 100));
+	FVector end = start + (forward * 1000);
+	FHitResult hit;
+
+	if (GetWorld()) 
+	{
+		bool actorHit = GetWorld()->LineTraceSingleByChannel(hit, start, end, ECC_Pawn, FCollisionQueryParams(), FCollisionResponseParams());
+		DrawDebugLine(GetWorld(), start, end, FColor::Red, false, 2.f, 0.f, 10.f);
+		if (actorHit && hit.GetActor())
+		{
+			GEngine->AddOnScreenDebugMessage(-1, 2.0f, FColor::Red, hit.GetActor()->GetFName().ToString());
+		}
+	}
 }
 
