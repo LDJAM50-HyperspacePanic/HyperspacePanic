@@ -4,11 +4,6 @@
 
 #include "CoreMinimal.h"
 #include "GameFramework/Character.h"
-#include "GameFramework/Actor.h"
-#include "Engine/World.h"
-#include "DrawDebugHelpers.h"
-#include "Components/InputComponent.h"
-#include "Camera/CameraComponent.h"
 #include "HPCharacter.generated.h"
 
 UCLASS()
@@ -37,7 +32,4 @@ protected:
 	void MoveRight(float AxisVal);
 
 	void WackWrench();
-
-	UPROPERTY(EditAnywhere, Category = "Camera")
-		UCameraComponent* cam;
 };
